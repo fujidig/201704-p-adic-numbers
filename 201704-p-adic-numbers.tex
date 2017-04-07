@@ -73,7 +73,7 @@ $X$を集合, $d$を$X \times X$から$\R$への写像とする。任意の$x, y
 整数$n \ne 0$の素因数分解を
 \[n = \pm p_1^{e_1} p_2^{e_2} \dots p_k^{e_k}\]
 とする。このとき$n$の$p$指数を
-\[e_p(n) = \begin{cases}e_i & (\exists i. p = p_i) \\ 0 & (\text{otherwise}) \end{cases} \]
+\[e_p(n) = \begin{cases}e_i & (\exists i, p = p_i) \\ 0 & (\text{otherwise}) \end{cases} \]
 で定める。
 
 有理数$x = m/n\,(m,n \in Z, m, n \ne 0)$の$p$指数を
@@ -142,7 +142,7 @@ $\Q_p$は$\Q$を$p$進距離によって完備化した空間だと述べまし�
 $(X, d)$を距離空間、$\{x_n\}_{n\in\mathbb{N}}$をXの点の列とする。
 このとき$\alpha \in X$が存在して
 \[
-\forall \epsilon>0. \exists N\in\mathbb{N}. \forall n \in \mathbb{N}. n \geq N \Rightarrow d(x_n, \alpha) < \epsilon
+\forall \epsilon>0, \exists N\in\mathbb{N}, \forall n \in \mathbb{N}, n \geq N \Rightarrow d(x_n, \alpha) < \epsilon
 \]
 を満たすとき、$X$の点列$\{x_n\}_{n\in\mathbb{N}}$は$\alpha$に収束するといい、
 \[
@@ -154,7 +154,7 @@ $(X, d)$を距離空間、$\{x_n\}_{n\in\mathbb{N}}$をXの点の列とする。
 \begin{oframed}\begin{defi}[コーシー列]
 $(X, d)$を距離空間、$\{x_n\}_{n\in\mathbb{N}}$をXの点の列とする。
 \[
-\forall \epsilon>0. \exists N\in\mathbb{N}. \forall n \in \mathbb{N}. n \geq N \Rightarrow d(x_n, x_N) < \epsilon
+\forall \epsilon>0, \exists N\in\mathbb{N}, \forall n \in \mathbb{N}, n \geq N \Rightarrow d(x_n, x_N) < \epsilon
 \]
 を満たすとき、$\{x_n\}_{n\in\mathbb{N}}$はコーシー列であるという。
 \end{defi}\end{oframed}
@@ -169,7 +169,7 @@ $(X, d)$を距離空間とする。$X$の任意のコーシー列が収束する
 \begin{oframed}\begin{defi}[稠密性]
 $(X, d)$を距離空間とする。$S \subset X$が次の条件を満たすとき、$S$は$X$において稠密であるという。
 \[
-\forall x \in X. \forall \epsilon > 0. \exists y \in S. d(x, y) < \epsilon
+\forall x \in X, \forall \epsilon > 0, \exists y \in S, d(x, y) < \epsilon
 \]
 \end{defi}\end{oframed}
 
@@ -190,7 +190,7 @@ $(\tilde{X}, \tilde{d})$を$(X,d)$の完備化という。
 \noindent 証明の概略。
 $X$のコーシー列全体を$C(X)$と書き、$C(X)$に次の同値関係を入れる。
 
-\[\{x_n\} \sim \{y_n\} \iff \forall \epsilon > 0. \exists N \in \mathbb{N}. \forall n \in \mathbb{N}. n \geq N \Rightarrow d(x_n, y_n) < \epsilon\]
+\[\{x_n\} \sim \{y_n\} \iff \forall \epsilon > 0, \exists N \in \mathbb{N}, \forall n \in \mathbb{N}, n \geq N \Rightarrow d(x_n, y_n) < \epsilon\]
 
 そして$\tilde{X} = C(X)/\sim$とおく。また
 \[\tilde{d}(\{x_n\}, \{y_n\}) = \lim_{n\to\infty} d(x_n, y_n)\]
@@ -225,7 +225,7 @@ $\tilde{x}, \tilde{y} \in \Q_p$に対して$\Q$の点列$\{x_n\}, \{y_n\}$で$x_
 任意の$x, y, z \in A$に対して
 \begin{enumerate}
 \item $0 + x = x$
-\item $\exists x'\in A. x + x' = 0$
+\item $\exists x'\in A, x + x' = 0$
 \item $x + (y + z) = (x + y) + z$
 \item $x + y = y + x$
 \item $1 \cdot x = x$
