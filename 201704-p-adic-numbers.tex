@@ -69,29 +69,29 @@ $X$を集合, $d$を$X \times X$から$\R$への写像とする。任意の$x, y
 
 以下$p$を素数とします。
 
-\begin{oframed}\begin{defi}[$p$指数]
+\begin{oframed}\begin{defi}[$p$進付値]
 整数$n \ne 0$の素因数分解を
 \[n = \pm p_1^{e_1} p_2^{e_2} \dots p_k^{e_k}\]
-とする。このとき$n$の$p$指数を
-\[e_p(n) = \begin{cases}e_i & (\exists i, p = p_i) \\ 0 & (\text{otherwise}) \end{cases} \]
+とする。このとき$n$の$p$進付置を
+\[v_p(n) = \begin{cases}e_i & (\exists i, p = p_i) \\ 0 & (\text{otherwise}) \end{cases} \]
 で定める。
 
-有理数$x = m/n\,(m,n \in \Z, m, n \ne 0)$の$p$指数を
-\[e_p(x) = e_p(m) - e_p(n)\]
+有理数$x = m/n\,(m,n \in \Z, m, n \ne 0)$の$p$進付置を
+\[v_p(x) = v_p(m) - v_p(n)\]
 で定める。(これはwell-definedである)
 \end{defi}\end{oframed}
 
-\begin{oframed}\begin{defi}[$p$進付値]
-有理数$x \ne 0$の$p$進付値を
-\[v_p(x) = p^{-e_p(x)}\]
+\begin{oframed}\begin{defi}[$p$進絶対値]
+有理数$x \ne 0$の$p$進絶対値を
+\[|x|_p = p^{-v_p(x)}\]
 で定める。$0$に対しては
-\[v_p(0) = 0\]
+\[|0|_p = 0\]
 と定める。
 \end{defi}\end{oframed}
 
 \begin{oframed}\begin{defi}[$p$進距離]
 有理数$x, y$の$p$進距離を
-\[d_p(x, y) = v_p(x - y)\]
+\[d_p(x, y) = |x - y|_p\]
 で定める。
 \end{defi}\end{oframed}
 
@@ -106,8 +106,8 @@ $p$進距離は$p$でたくさん割れれば割れるほど$0$に近いとい�
 \begin{oframed}\begin{prop}\label{prop:1}
 任意の$a, b \in \Q$について
 \begin{enumerate}
-\item $e_p(ab) = e_p(a) + e_p(b)$
-\item $e_p(a+b) \geq \min\{e_p(a), e_p(b)\}$
+\item $v_p(ab) = v_p(a) + v_p(b)$
+\item $v_p(a+b) \geq \min\{v_p(a), v_p(b)\}$
 \end{enumerate}
 \end{prop}\end{oframed}
 \begin{proof}
@@ -117,17 +117,17 @@ $p$進距離は$p$でたくさん割れれば割れるほど$0$に近いとい�
 \begin{oframed}\begin{prop}\label{prop:2}
 任意の$a, b \in \Q$について
 \begin{enumerate}
-\item $v_p(a) \geq 0$
-\item $v_p(a) = 0 \iff a = 0$
-\item $v_p(ab) = v_p(a) v_p(b)$
-\item $v_p(a+b) \leq \max\{v_p(a), v_p(b)\}$
+\item $|a|_p \geq 0$
+\item $|a|_p = 0 \iff a = 0$
+\item $|ab|_p = |a|_p |b|_p$
+\item $|a+b|_p \leq \max\{|a|_p, |b|_p\}$
 \end{enumerate}
 \end{prop}\end{oframed}
 \begin{proof}
 1と2は明らかである。3と4は命題 \ref{prop:1}から従う。
 \end{proof}
 
-命題 \ref{prop:2}の4が成り立つことを$v_p$は非アルキメデス的付値であるといいます。
+命題 \ref{prop:2}の4を$p$進絶対値の非アルキメデス性といいます。
 
 \begin{oframed}\begin{thm}
 $d_p$は$\Q$上の距離関数である。
@@ -259,40 +259,38 @@ $\Q_p$は体である。
 任意の$0$でない元$\tilde{x}$について$\tilde{x'}$が存在して$\tilde{x} \tilde{x'} = 1$となることは、$\tilde{x'} = \lim_{n\to\infty}{1/x_n}$とおけば示せる。(ただしこの極限が存在することを示す必要がある)
 \end{proof}
 
-$\Q$に定義されていた$p$進付値を$\Q_p$に拡張します。
+$\Q$に定義されていた$p$進絶対値を$\Q_p$に拡張します。
 
 \begin{oframed}\begin{defi}
 $\tilde{x} \in \Q_p$に対して
-\[\tilde{v_p}(\tilde{x}) = \tilde{d_p}(\tilde{x}, \tilde{0})\]
+\[|\tilde{x}|_p = \tilde{d_p}(\tilde{x}, \tilde{0})\]
 と定める。
 \end{defi}\end{oframed}
 
 \begin{oframed}\begin{prop}\label{prop:4}
 任意の$\tilde{a}, \tilde{b} \in \Q_p$について
 \begin{enumerate}
-\item $\tilde{v_p}(\tilde{a}) \geq 0$
-\item $\tilde{v_p}(\tilde{a}) = 0 \iff \tilde{a} = \tilde{0}$
-\item $\tilde{v_p}(\tilde{a}\tilde{b}) = \tilde{v_p}(\tilde{a}) \tilde{v_p}(\tilde{b})$
-\item $\tilde{v_p}(\tilde{a}+\tilde{b}) \leq \max\{\tilde{v_p}(\tilde{a}), \tilde{v_p}(\tilde{b})\}$
+\item $|\tilde{a}|_p \geq 0$
+\item $|\tilde{a}|_p = 0 \iff \tilde{a} = \tilde{0}$
+\item $|\tilde{a}\tilde{b}|_p = |\tilde{a}|_p  |\tilde{b}|_p$
+\item $|\tilde{a}+\tilde{b}|_p \leq \max\{|\tilde{a}|_p, |\tilde{b}|_p\}$
 \end{enumerate}
 \end{prop}\end{oframed}
 \begin{proof}
 1と2は定義より出る。3と4は命題 \ref{prop:2}の3と4の極限をとればよい。
 \end{proof}
 
-$\tilde{v_p}$のことも$p$進付値と言います。
-
 $\Q_p$において、和、差、積、商は連続写像になります。このことの証明は省きます。
 
 \begin{oframed}\begin{defi}
-$\Z_p = \{\tilde{x} \in \Q_p \mid \tilde{v_p}(\tilde{x}) \le 1 \}$と定め、$\Z_p$の元を$p$進整数という。
+$\Z_p = \{\tilde{x} \in \Q_p \mid |\tilde{x}|_p \le 1 \}$と定め、$\Z_p$の元を$p$進整数という。
 \end{defi}\end{oframed}
 
 命題 \ref{prop:4}より$0, 1$は$p$進整数であり$p$進整数同士の和、差、積は$p$進整数となります。よって$\Z_p$は環となります。
 
 \section{$p$進数の性質}
 
-以降、$\tilde{d_p}$, $\tilde{v_p}$をチルダなしの$d_p$、$v_p$で書き、$\Q_p$の元も$\tilde{x}$ではなく$x$のような文字を使います。
+以降、$\tilde{d_p}$をチルダなしの$d_p$で書き、$\Q_p$の元も$\tilde{x}$ではなく$x$のような文字を使います。
 
 今、等比数列の和の公式より
 \[(1-p^{n+1}) / (1-p) = 1 + p + p^2 + \dots + p^n\]
@@ -315,7 +313,7 @@ $\{a_n\}$を$\Q_p$の点列とする。このとき
 \begin{proof}
 $\Rightarrow$は$\R$のときと同じ証明でよい。
 
-$\Leftarrow$) $v_p(a_{m+1} + a_{m+2} + \dots a_n) \leq \max\{v_p(a_{m+1}),  v_p(a_{m+2}), \dots, v_p(a_n)\}$より出る。
+$\Leftarrow$) $|a_{m+1} + a_{m+2} + \dots a_n|_p \leq \max\{|a_{m+1}|_p,  |a_{m+2}|_p, \dots, |a_n|_p\}$より出る。
 \end{proof}
 
 命題 \ref{prop:3}から次の事実が従います。
@@ -373,7 +371,7 @@ x = \Sigma_{i=k}^\infty a_k p^k \label{eq:1}
 \end{thm}\end{oframed}
 証明はしません。証明の鍵となるものは
 \begin{itemize}
-\item $p$進付値の離散性
+\item $p$進絶対値の離散性
 \item $\Q$が$\Q_p$において稠密であること
 \end{itemize}
 です。
