@@ -63,7 +63,7 @@ $X$を集合, $d$を$X \times X$から$\R$への写像とする。任意の$x, y
 また$(X, d)$あるいは単に$X$を距離空間という。
 \end{defi}\end{oframed}
 
-たとえば、$\Q$で$d(x, y) = |x - y|$と定義すると$(\Q, d)$は距離空間です。
+たとえば、$\Q$で$d(x, y) = |x - y|$と定義すると$(\Q, d)$は距離空間です。確認しましょう。
 同じ集合でも距離の入れ方は一つとは限りません。
 実際、これから$\Q$に$|x - y|$とは異なる$p$進距離$d_p$を定めます。
 
@@ -76,7 +76,7 @@ $X$を集合, $d$を$X \times X$から$\R$への写像とする。任意の$x, y
 \[e_p(n) = \begin{cases}e_i & (\exists i, p = p_i) \\ 0 & (\text{otherwise}) \end{cases} \]
 で定める。
 
-有理数$x = m/n\,(m,n \in Z, m, n \ne 0)$の$p$指数を
+有理数$x = m/n\,(m,n \in \Z, m, n \ne 0)$の$p$指数を
 \[e_p(x) = e_p(m) - e_p(n)\]
 で定める。(これはwell-definedである)
 \end{defi}\end{oframed}
@@ -219,7 +219,7 @@ $\tilde{x}, \tilde{y} \in \Q_p$に対して$\Q$の点列$\{x_n\}, \{y_n\}$で$x_
 
 こうして定義した演算に関して$\Q_p$は環になります。
 
-\begin{oframed}\begin{defi}
+\begin{oframed}\begin{defi}[環]
 集合$A$とその上の二項演算$+$, $\cdot$について、元$0, 1 \in A$が存在して次を満たすとき$(A, +, \cdot)$あるいは単に$A$を環という。
 
 任意の$x, y, z \in A$に対して
@@ -237,7 +237,7 @@ $\tilde{x}, \tilde{y} \in \Q_p$に対して$\Q$の点列$\{x_n\}, \{y_n\}$で$x_
 
 $\Q_p$は環であるだけではなく体でもあります。
 
-\begin{oframed}\begin{defi}
+\begin{oframed}\begin{defi}[体]
 集合$K$が環であって次を満たすとき$K$を体という。
 
 任意の$x \in A, x \ne 0$に対して$x \cdot x' = 1$となる$x' \in K$がある。
@@ -294,7 +294,7 @@ $\Z_p = \{\tilde{x} \in \Q_p \mid \tilde{v_p}(\tilde{x}) \le 1 \}$と定め、$\
 
 以降、$\tilde{d_p}$, $\tilde{v_p}$をチルダなしの$d_p$、$v_p$で書き、$\Q_p$の元も$\tilde{x}$ではなく$x$のような文字を使います。
 
-今、等差数列の和の公式より
+今、等比数列の和の公式より
 \[(1-p^{n+1}) / (1-p) = 1 + p + p^2 + \dots + p^n\]
 です。$\Q_p$において両辺を$n \to \infty$とすると$p^{n+1} \to 0$なので、
 \[1 / (1-p) = 1 + p + p^2 + \dots\]
@@ -365,7 +365,7 @@ $2^4-1 = 15 = 3 \cdot 5$である。
 実は次の事実が知られています。
 \begin{oframed}\begin{thm}
 任意の$\Q_p$の元($\ne 0$)は一意的に$p$進展開可能。
-つまり任意の$x \in \Q_p- \{0\}$について$k \in \Z$, $a_k, a_{k+1}, \dots \in \Z$, $0 \le a_i < p-1$が一意的に存在して
+つまり任意の$x \in \Q_p- \{0\}$について$k \in \Z$, $a_k, a_{k+1}, \dots \in \Z$, $0 \le a_i < p-1$, $a_k \ne 0$が一意的に存在して
 \begin{align}
 x = \Sigma_{i=k}^\infty a_k p^k \label{eq:1}
 \end{align}
