@@ -1,0 +1,385 @@
+\documentclass[uplatex]{jsarticle}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{framed}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\theoremstyle{definition} %斜体にしない
+\newtheorem{thm}{定理}
+\newtheorem{defi}[thm]{定義}
+\newtheorem{lem}[thm]{補題}
+\newtheorem{prop}[thm]{命題}
+\newtheorem*{remark*}{注意}
+\newtheorem*{example*}{例}
+\renewcommand{\proofname}{証明}
+
+
+\begin{document}
+
+\title{$p$進数の初歩}
+\maketitle
+%\pagebreak
+
+\section{導入}
+
+次の式を見てください。
+
+\begin{align*}
+-1 &= 1 + 2 + 2^2 + 2^3 + 2^4 + \dots \\
+-1/2 &= 1 + 3 + 3^2 + 3^3 + 3^4 + \dots \\
+\sqrt{-1} &= 2 + 5 + 2 \cdot 5^2 + 5^3 + 3 \cdot 5^4 + 4 \cdot 5^5 + \dots
+\end{align*}
+
+実数や複素数として考えるとこの式は間違いです。なぜなら右辺は $+\infty$ に発散するからです。
+しかし、$p$進数の世界ではこれらは完全に正しい式です。一つ目は$2$進数、二つ目は$3$進数、三つ目は$5$進数として成り立ちます。
+
+$p$進数とはなんでしょうか。一言でいえば$p$進数の全体$\Q_p$は有理数全体$\Q$を$p$進距離と呼ばれる距離によって完備化した空間であり、それに四則演算の構造を入れたものです。ここに$p$は素数です。
+
+つまり、各素数$p$ごとに実数とは異なる数の世界$\Q_p$があるのです。各$\Q_p$は$\Q$を含んでいます。
+\[
+\Q_2, \Q_3, \Q_5, \Q_7, \Q_{11}, \dots \supset \Q \subset \mathbb{R}
+\]
+
+これから$\Q_p$を定義し、その性質を見ていきます。この発表が終わる頃には皆さんに最初の3つの式を納得していただけるだろうと期待しています。
+
+\section{$p$進数の定義}
+
+\begin{oframed}\begin{defi}[距離空間]
+$X$を集合, $d$を$X \times X$から$\R$への写像とする。任意の$x, y, z \in X$について次を満たすものとする。
+\begin{enumerate}
+	\item $d(x, y) \geq 0$
+	\item $d(x, y) = 0 \iff x = y$
+	\item $d(x, y) = d(y, x)$
+	\item $d(x, z) \leq d(x, y) + d(y, z)$
+\end{enumerate}
+このとき、$d$を$X$上の距離関数という。
+
+また$(X, d)$あるいは単に$X$を距離空間という。
+\end{defi}\end{oframed}
+
+たとえば、$\Q$で$d(x, y) = |x - y|$と定義すると$(\Q, d)$は距離空間です。
+同じ集合でも距離の入れ方は一つとは限りません。
+実際、これから$\Q$に$|x - y|$とは異なる$p$進距離$d_p$を定めます。
+
+以下$p$を素数とします。
+
+\begin{oframed}\begin{defi}[$p$指数]
+整数$n \ne 0$の素因数分解を
+\[n = \pm p_1^{e_1} p_2^{e_2} \dots p_k^{e_k}\]
+とする。このとき$n$の$p$指数を
+\[e_p(n) = \begin{cases}e_i & (\exists i. p = p_i) \\ 0 & (\text{otherwise}) \end{cases} \]
+で定める。
+
+有理数$x = m/n\,(m,n \in Z, m, n \ne 0)$の$p$指数を
+\[e_p(x) = e_p(m) - e_p(n)\]
+で定める。(これはwell-definedである)
+\end{defi}\end{oframed}
+
+\begin{oframed}\begin{defi}[$p$進付値]
+有理数$x \ne 0$の$p$進付値を
+\[v_p(x) = p^{-e_p(x)}\]
+で定める。$0$に対しては
+\[v_p(0) = 0\]
+と定める。
+\end{defi}\end{oframed}
+
+\begin{oframed}\begin{defi}[$p$進距離]
+有理数$x, y$の$p$進距離を
+\[d_p(x, y) = v_p(x - y)\]
+で定める。
+\end{defi}\end{oframed}
+
+$p$進距離が距離関数になることは確認する必要があります。
+
+しかし、その前に$p$進距離がどういう距離か説明します。
+$p$進距離は$p$でたくさん割れれば割れるほど$0$に近いという距離です。
+実際、
+\[d_2(1, 0) = 1, d_2(2, 0) = 1/2, d_2(4, 0) = 1/4, d_2(8, 0) = 1/8 \dots\]
+となります。
+
+\begin{oframed}\begin{prop}\label{prop:1}
+任意の$a, b \in \Q$について
+\begin{enumerate}
+\item $e_p(ab) = e_p(a) + e_p(b)$
+\item $e_p(a+b) \geq \min\{e_p(a), e_p(b)\}$
+\end{enumerate}
+\end{prop}\end{oframed}
+\begin{proof}
+あとで
+\end{proof}
+
+\begin{oframed}\begin{prop}\label{prop:2}
+任意の$a, b \in \Q$について
+\begin{enumerate}
+\item $v_p(a) \geq 0$
+\item $v_p(a) = 0 \iff a = 0$
+\item $v_p(ab) = v_p(a) v_p(b)$
+\item $v_p(a+b) \leq \max\{v_p(a), v_p(b)\}$
+\end{enumerate}
+\end{prop}\end{oframed}
+\begin{proof}
+1と2は明らかである。3と4は命題 \ref{prop:1}から従う。
+\end{proof}
+
+命題 \ref{prop:2}の4が成り立つことを$v_p$は非アルキメデス的付値であるといいます。
+
+\begin{oframed}\begin{thm}
+$d_p$は$\Q$上の距離関数である。
+\end{thm}\end{oframed}
+\begin{proof}
+あとで
+\end{proof}
+
+$\Q_p$は$\Q$を$p$進距離によって完備化した空間だと述べました。そこで完備化を説明する必要があります。そのために、点列の収束、コーシー列、完備性という概念を説明します。
+
+\begin{oframed}\begin{defi}[点列の収束]
+$(X, d)$を距離空間、$\{x_n\}_{n\in\mathbb{N}}$をXの点の列とする。
+このとき$\alpha \in X$が存在して
+\[
+\forall \epsilon>0. \exists N\in\mathbb{N}. \forall n \in \mathbb{N}. n \geq N \Rightarrow d(x_n, \alpha) < \epsilon
+\]
+を満たすとき、$X$の点列$\{x_n\}_{n\in\mathbb{N}}$は$\alpha$に収束するといい、
+\[
+\lim_{n \to \infty} x_n = \alpha
+\]
+と書く。
+\end{defi}\end{oframed}
+
+\begin{oframed}\begin{defi}[コーシー列]
+$(X, d)$を距離空間、$\{x_n\}_{n\in\mathbb{N}}$をXの点の列とする。
+\[
+\forall \epsilon>0. \exists N\in\mathbb{N}. \forall n \in \mathbb{N}. n \geq N \Rightarrow d(x_n, x_N) < \epsilon
+\]
+を満たすとき、$\{x_n\}_{n\in\mathbb{N}}$はコーシー列であるという。
+\end{defi}\end{oframed}
+
+定義より収束列は明らかにコーシー列です。しかし逆は成り立つとは限りません。
+
+\begin{oframed}\begin{defi}[完備]
+$(X, d)$を距離空間とする。$X$の任意のコーシー列が収束するとき$X$は完備であるという。
+\end{defi}\end{oframed}
+
+
+\begin{oframed}\begin{defi}[稠密性]
+$(X, d)$を距離空間とする。$S \subset X$が次の条件を満たすとき、$S$は$X$において稠密であるという。
+\[
+\forall x \in X. \forall \epsilon > 0. \exists y \in S. d(x, y) < \epsilon
+\]
+\end{defi}\end{oframed}
+
+たとえば$d$をユークリッド距離とすると$(\R, d)$は完備ですが、$(\Q, d)$は完備ではありません。
+
+完備ではない距離空間も、それに点を付け加えて完備にすることができます。すなわち次が成立します。
+
+\begin{oframed}\begin{thm}[完備化]
+$(X, d)$を距離空間とする。このとき距離空間$(\tilde{X}, \tilde{d})$であって次を満たすものがある。
+\begin{enumerate}
+\item $X \subset \tilde{X}$
+\item $\tilde{d}$の$X \times X$への制限は$d$に等しい
+\item $\tilde{X}$は完備である
+\item $X$は$\tilde{X}$上稠密である
+\end{enumerate}
+$(\tilde{X}, \tilde{d})$を$(X,d)$の完備化という。
+\end{thm}\end{oframed}
+\noindent 証明の概略。
+$X$のコーシー列全体を$C(X)$と書き、$C(X)$に次の同値関係を入れる。
+
+\[\{x_n\} \sim \{y_n\} \iff \forall \epsilon > 0. \exists N \in \mathbb{N}. \forall n \in \mathbb{N}. n \geq N \Rightarrow d(x_n, y_n) < \epsilon\]
+
+そして$\tilde{X} = C(X)/\sim$とおく。また
+\[\tilde{d}(\{x_n\}, \{y_n\}) = \lim_{n\to\infty} d(x_n, y_n)\]
+とおく。このとき$(\tilde{X}, \tilde{d})$が定理の条件を満たす。 $\qed$
+
+\begin{oframed}\begin{defi}
+$(\Q, d_p)$の完備化を$(\Q_p, \tilde{d_p})$と書く。
+\end{defi}\end{oframed}
+
+これで距離空間としての$\Q_p$は定義されました。$\Q_p$の元のことを$p$進数といいます。しかし四則演算がまだ定義されていません。四則演算（のうち和・差・積）は次のように定義します。
+
+\begin{oframed}\begin{defi}
+$\Q_p$に和・差・積を次のように定義する。
+
+$\tilde{x}, \tilde{y} \in \Q_p$に対して$\Q$の点列$\{x_n\}, \{y_n\}$で$x_n \to \tilde{x}, y_n \to \tilde{y} (n \to \infty)$となるものをとる。このとき
+\begin{align*}
+\tilde{x} + \tilde{y} &= \lim_{n\to\infty} (x_n + y_n) \\
+\tilde{x} - \tilde{y} &= \lim_{n\to\infty} (x_n - y_n) \\
+\tilde{x} \tilde{y} &= \lim_{n\to\infty} (x_n y_n)
+\end{align*}
+と定める。
+\end{defi}\end{oframed}
+
+これらはwell-definedです。
+
+こうして定義した演算に関して$\Q_p$は環になります。
+
+\begin{oframed}\begin{defi}
+集合$A$とその上の二項演算$+$, $\cdot$について、元$0, 1 \in A$が存在して次を満たすとき$(A, +, \cdot)$あるいは単に$A$を環という。
+
+任意の$x, y, z \in A$に対して
+\begin{enumerate}
+\item $0 + x = x$
+\item $\exists x'\in A. x + x' = 0$
+\item $x + (y + z) = (x + y) + z$
+\item $x + y = y + x$
+\item $1 \cdot x = x$
+\item $x \cdot (y \cdot z) = (x \cdot y) \cdot z$
+\item $x \cdot y = y \cdot x$
+\item $x \cdot (y + z) = x \cdot y + x \cdot z$
+\end{enumerate}
+\end{defi}\end{oframed}
+
+$\Q_p$は環であるだけではなく体でもあります。
+
+\begin{oframed}\begin{defi}
+集合$K$が環であって次を満たすとき$K$を体という。
+
+任意の$x \in A, x \ne 0$に対して$x \cdot x' = 1$となる$x' \in K$がある。
+\end{defi}\end{oframed}
+
+\begin{oframed}\begin{thm}
+$\Q_p$は体である。
+\end{thm}\end{oframed}
+\begin{proof}
+環であることは$\Q$が環であることと、$\Q_p$の演算の定義より出る。
+たとえば結合法則$\tilde{x} + (\tilde{y} + \tilde{z}) = (\tilde{x} + \tilde{y}) + \tilde{z}$は$Q$の点列$\{x_n\}, \{y_n\}, \{z_n\}$で$x_n \to \tilde{x}, y_n \to \tilde{y}, z_n \to \tilde{z} (n \to \infty)$となるものをとるとき
+\begin{align*}
+\tilde{x} + (\tilde{y} + \tilde{z}) &= \lim_{n\to\infty} (x_n + (y_n + z_n)) \\
+ &= \lim_{n\to\infty} ((x_n + y_n) + z_n) \\
+ &= (\tilde{x} + \tilde{y}) + \tilde{z}
+\end{align*}
+というように示せる。
+
+任意の$0$でない元$\tilde{x}$について$\tilde{x'}$が存在して$\tilde{x} \tilde{x'} = 1$となることは、$\tilde{x'} = \lim_{n\to\infty}{1/x_n}$とおけば示せる。(ただしこの極限が存在することを示す必要がある)
+\end{proof}
+
+$\Q$に定義されていた$p$進付値を$\Q_p$に拡張します。
+
+\begin{oframed}\begin{defi}
+$\tilde{x} \in \Q_p$に対して
+\[\tilde{v_p}(\tilde{x}) = \tilde{d_p}(\tilde{x}, \tilde{0})\]
+と定める。
+\end{defi}\end{oframed}
+
+\begin{oframed}\begin{prop}\label{prop:4}
+任意の$\tilde{a}, \tilde{b} \in \Q_p$について
+\begin{enumerate}
+\item $\tilde{v_p}(\tilde{a}) \geq 0$
+\item $\tilde{v_p}(\tilde{a}) = 0 \iff \tilde{a} = \tilde{0}$
+\item $\tilde{v_p}(\tilde{a}\tilde{b}) = \tilde{v_p}(\tilde{a}) \tilde{v_p}(\tilde{b})$
+\item $\tilde{v_p}(\tilde{a}+\tilde{b}) \leq \max\{\tilde{v_p}(\tilde{a}), \tilde{v_p}(\tilde{b})\}$
+\end{enumerate}
+\end{prop}\end{oframed}
+\begin{proof}
+1と2は定義より出る。3と4は命題 \ref{prop:2}の3と4の極限をとればよい。
+\end{proof}
+
+$\tilde{v_p}$のことも$p$進付値と言います。
+
+$\Q_p$において、和、差、積、商は連続写像になります。このことの証明は省きます。
+
+\begin{oframed}\begin{defi}
+$\Z_p = \{\tilde{x} \in \Q_p \mid \tilde{v_p}(\tilde{x}) \le 1 \}$と定め、$\Z_p$の元を$p$進整数という。
+\end{defi}\end{oframed}
+
+命題 \ref{prop:4}より$0, 1$は$p$進整数であり$p$進整数同士の和、差、積は$p$進整数となります。よって$\Z_p$は環となります。
+
+\section{$p$進数の性質}
+
+以降、$\tilde{d_p}$, $\tilde{v_p}$をチルダなしの$d_p$、$v_p$で書き、$\Q_p$の元も$\tilde{x}$ではなく$x$のような文字を使います。
+
+今、等差数列の和の公式より
+\[(1-p^{n+1}) / (1-p) = 1 + p + p^2 + \dots + p^n\]
+です。$\Q_p$において両辺を$n \to \infty$とすると$p^{n+1} \to 0$なので、
+\[1 / (1-p) = 1 + p + p^2 + \dots\]
+となります。
+ここに$p = 2, 3$を代入すると最初の3つの式のうちの二つ
+\begin{align*}
+-1 &= 1 + 2 + 2^2 + 2^3 + 2^4 + \dots (\text{in } \Q_2) \\
+-1/2 &= 1 + 3 + 3^2 + 3^3 + 3^4 + \dots (\text{in } \Q_3)
+\end{align*}
+が示せました！
+
+非アルキメデス性から次の重要な事実が出ます。
+
+\begin{oframed}\begin{prop}\label{prop:3}
+$\{a_n\}$を$\Q_p$の点列とする。このとき
+\[\Sigma_{n=1}^\infty a_n が収束 \iff \lim_{n\to\infty} a_n = 0\]
+\end{prop}\end{oframed}
+\begin{proof}
+$\Rightarrow$は$\R$のときと同じ証明でよい。
+
+$\Leftarrow$) $v_p(a_{m+1} + a_{m+2} + \dots a_n) \leq \max\{v_p(a_{m+1}),  v_p(a_{m+2}), \dots, v_p(a_n)\}$より出る。
+\end{proof}
+
+命題 \ref{prop:3}から次の事実が従います。
+
+\begin{oframed}\begin{prop}
+$k \in \Z$, $a_k, a_{k+1}, \dots \in \Z$, $0 \le a_i < p-1$のとき級数
+\begin{align}
+\Sigma_{i=k}^\infty a_k p^k \label{eq:1}
+\end{align}
+は$\Q_p$において収束する。
+\end{prop}\end{oframed}
+
+$k=0$である場合、$\Sigma_{i=0}^\infty a_k p^k$を$(\dots a_3 a_2 a_1 a_0)_{(p)}$とも書きます。たとえば $-1 = (\dots 1 1 1 1)_{(2)}$。
+
+$\Q_p$の元が式 (\ref{eq:1})のように表せるとき、その表示を$p$進展開といいます。
+
+$\Q$の元は$p$進展開可能であることを見ましょう。
+
+$a$を$p$と互いに素な整数とします。このとき初等整数論（あるいは初等群論）の事実より
+\[p^k \equiv 1 \pmod a\]
+となる$k \in \mathbb{N}$が存在します。すると
+\[p^k-1 = ab\]
+です。これを変形すると
+\begin{align*}
+\frac{1}{a} &= \frac{-b}{1-p^k} \\
+&= -b(1+p^k+p^{2k}+\dots+p^{nk}+\dots)
+\end{align*}
+となります。$-b$も$p$進展開して積を計算すれば$1/a$の$p$進展開が得られます。
+
+\begin{example*}
+$1/5$の$2$進展開を求める。
+$2^4-1 = 15 = 3 \cdot 5$である。
+
+\begin{align*}
+\frac{1}{5} &= \frac{-3}{1-2^4} \\
+&= -3 (1 + 2^4 + 2^8 + \dots+ 2^{4n} + \dots) \\
+&= -(1+2) (1 + 2^4 + 2^8 + \dots+ 2^{4n} + \dots) \\
+&= -(1 + 2^1 + 2^4 + 2^5 + 2^8 + 2^9 + \dots) \\
+&= -(\dots 00110011)_{(2)} \\
+&= (\dots 11001101)_{(2)} \\
+&= 1 + 2^2 + 2^3 + 2^6 + 2^7 + 2^{10} + 2^{11} + \dots
+\end{align*}
+\end{example*}
+
+この例から任意の$\Q$の元は$p$進展開可能であることが推察できます。
+
+実は次の事実が知られています。
+\begin{oframed}\begin{thm}
+任意の$\Q_p$の元($\ne 0$)は一意的に$p$進展開可能。
+つまり任意の$x \in \Q_p- \{0\}$について$k \in \Z$, $a_k, a_{k+1}, \dots \in \Z$, $0 \le a_i < p-1$が一意的に存在して
+\begin{align}
+x = \Sigma_{i=k}^\infty a_k p^k \label{eq:1}
+\end{align}
+となる。このとき$v_p(x) = p^{-k}$。
+\end{thm}\end{oframed}
+証明はしません。証明の鍵となるものは
+\begin{itemize}
+\item $p$進付値の離散性
+\item $\Q$が$\Q_p$において稠密であること
+\end{itemize}
+です。
+
+\section{ヘンゼルの補題}
+
+\begin{thebibliography}{9}
+\item 彌永昌吉・彌永健一『集合と位相Ⅱ』岩波書店
+\item 雪江明彦『整数論1 初等整数論からp進数へ』日本評論社
+\end{thebibliography}
+
+\end{document}
